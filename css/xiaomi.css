@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.xiaomi ul {
+    list-style: none;
+}
+
+.xiaomi li {
+    float: left;
+    height: 300px;
+    position: relative;
+    margin: 10px 5px;
+    overflow: hidden;
+}
+
+.xiaomi p {
+    text-align: center;
+}
+
+.xiaomi .bigbox {
+    width: 999px;
+    height: 626px;
+    margin: 50px auto;
+}
+
+.xiaomi .ulbox1 {
+    width: 999px;
+    float: left;
+}
+
+.xiaomi .colorBox {
+    height: 30px;
+    width: 100%;
+    background: orange;
+    position: absolute;
+    bottom: -30px;
+}

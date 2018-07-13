@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .black_box {
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            display: none;
+        }
+        
+        .alert {
+            width: 300px;
+            height: 200px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -150px;
+        }
+        
+        .alert_top {
+            width: 100%;
+            height: 30px;
+            background: #ccc;
+        }
+        
+        .l {
+            width: 150px;
+            height: 100%;
+            float: left;
+        }
+        
+        .r {
+            width: 150px;
+            height: 100%;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <a href="购物车.html">转跳到商品页面</a> -->
+    <div class="black_box">
+        <div class="alert">
+            <div class="alert_top"></div>
+            <button class="l">确定</button>
+            <button class="r">取消</button>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>单价</th>
+                <th>购买数量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody class="tbox">
+
+        </tbody>
+    </table>
+    <script src="jquery.js"></script>
+    <script>
+        var index_js = (function() {
+            var tbody = $('.tbox');
+
+
+            return {
+                init() {
+
+                    this.getDta()
+                },
+                //渲染数据
+                insertData(data) {
+                    // console.log(data);
+                    var arr = [];
+                    for (var i = 0; i < data.length; i++) {
+                        var li = `<tr id="${data[i].id}">
+                            <td>${data[i].name}</td>
+                            <td>${data[i].price}</td>
+                            <td><input type="number" value="${data[i].count}"></td>
+                            <td><button class="btn">删除</button></td>
+                            </tr>`
+                        arr.push(li);
+                        // console.log(arr);
+
+                    }
+
+                    tbody.html(arr.join(''));
+
+                },
+                getDta() {
+                    var _this = this;
+                    $.post('json/shopping.json', function(data) {
+                        // console.log(data);
+                        _this.insertData(data)
+                        _this.events(data)
+                    }, 'json')
+                },
+                events(data) {
+                    var _this = this;
+
+                    tbody.on('click', '.btn', function() {
+                        var tr = $(this).closest('tr');
+                        $('.black_box').css(
+                                'display', 'block'
+                            )
+                            // tr.remove()
+
+                        $('.black_box').on('mousedown', '.alert_top', function(ev) {
+                            ev.stopPropagation
+                            $('.black_box').on('mousemove', function(ev) {
+                                ev = ev || window.event
+                                ev.stopPropagation
+                                var offset = $('.alert').offset()
+                                var l = ev.clientX - offset.left
+                                var r = ev.clientY - offset.top
+                                console.log(offset.left, offset.top);
+
+                                // var offset = $('.black_box').offset()
+                                $('.alert').css({
+                                    'left': l,
+                                    'top': r
+                                })
+                            })
+
+                        })
+                        $('.black_box').on('click', '.l', function() {
+
+                            // var tr = $(this).closest('tr');
+                            tr.remove()
+                            console.log(1);
+                            $('.black_box').css(
+                                'display', 'none'
+                            )
+
+                        })
+                        $('.black_box').on('click', '.r', function() {
+                            $('.black_box').css(
+                                'display', 'none'
+                            )
+                            console.log(2);
+
+                        })
+                    })
+
+                }
+            }
+        })()
+        index_js.init();
+    </script>
+</body>
+
+</html>

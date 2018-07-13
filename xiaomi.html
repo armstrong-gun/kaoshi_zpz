@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/xiaomi.css">
+</head>
+
+<body>
+    <div class="xiaomi ">
+        <div class="bigbox">
+            <ul class="ulbox1">
+                <li>
+                    <img src="images/p1_03.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+                <li>
+                    <img src="images/p1_05.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+                <li>
+                    <img src="images/p1_07.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+                <li>
+                    <img src="images/p1_09.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+            </ul>
+            <ul class="ulbox1">
+                <li>
+                    <img src="images/p1_14.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+                <li>
+                    <img src="images/p1_15.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+                <li>
+                    <img src="images/p1_16.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+                <li>
+                    <img src="images/p1_17.png" alt="">
+                    <p>小米电视</p>
+                    <p>14440元</p>
+                    <div class="colorBox">老师考试太难了</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="jquery.js"></script>
+    <script>
+        $('.ulbox1').on('mouseover', 'li', function() {
+            $('.ulbox1').stop()
+            $(this).animate({
+                top: -5
+            }, 1000)
+            $(this).children('div').animate({
+                bottom: 0
+            }, 1000)
+        }).on('mouseout', 'li', function() {
+            $('.ulbox1').stop()
+            $(this).animate({
+                top: 0
+            }, 1000)
+            $(this).children('div').animate({
+                bottom: -30
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

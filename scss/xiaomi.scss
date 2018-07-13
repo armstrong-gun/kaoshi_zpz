@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.xiaomi {
+    ul {
+        list-style: none;
+    }
+    li {
+        float: left;
+        height: 300px;
+        position: relative;
+        margin: 10px 5px;
+        overflow: hidden;
+    }
+    p {
+        text-align: center;
+    }
+    .bigbox {
+        width: 999px;
+        height: 626px;
+        margin: 50px auto;
+    }
+    .ulbox1 {
+        width: 999px;
+        float: left;
+    }
+    .colorBox {
+        height: 30px;
+        width: 100%;
+        background: orange;
+        position: absolute;
+        bottom: -30px;
+    }
+}
